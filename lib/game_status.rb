@@ -15,18 +15,15 @@ WIN_COMBINATIONS = [
 [6,4,2] # right_diagonal
 ]
 
-def won?(board)
-  if !won?(board)
-     return nil
-   else WIN_COMBINATIONS.each do |win_combo|
-     if check_win_combination?(board, 'X', win_combo)
-       return 'X'
-     elsif check_win_combination?(board, 'O', win_combo)
-       return 'O'
-     end
-   end
- end
- end
+def won?
+    WIN_COMBINATIONS.each do |combinations|
+      if combinations.all? {|combination| combination == 'X' or combination == 'O'}
+        combinations
+      else
+        false
+      end
+    end
+  end
 
 def full?(board)
    board.all? {|i| i == "X" || i == "O"}
